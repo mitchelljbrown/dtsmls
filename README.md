@@ -3,4 +3,4 @@ R package for processing and analyzing multiple dts snapshots in multilevel syst
 
 install dtsmls
 
-devtools::install_github('mitchelljbrown/mls')
+devtools::install_github('mitchelljbrown/dtsmls')
