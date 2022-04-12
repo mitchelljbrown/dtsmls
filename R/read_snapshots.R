@@ -14,15 +14,14 @@
 #' @examples
 read_snapshots <- function(x,
                            power=15,
-                           start=0.0, end=36000.0,
                            smooth=FALSE,
                            out="TC",
                            heating="heating") {
 
 
 
-  x$trace_data <- get_data_table(x)[elapsed_time >= start & elapsed_time <= end]
-  x$trace_time <- get_time_table(x)[elapsed_time >= start & elapsed_time <= end]
+  x$trace_data <- get_data_table(x)[elapsed_time >= 0 & elapsed_time <= 1800]
+  x$trace_time <- get_time_table(x)[elapsed_time >= 0 & elapsed_time <= 1800]
 
   # return the dts object
   if (out=='dtsobject'){

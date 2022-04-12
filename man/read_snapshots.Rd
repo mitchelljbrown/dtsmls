@@ -4,28 +4,20 @@
 \alias{read_snapshots}
 \title{read_snaphots}
 \usage{
-read_snapshots(
-  x,
-  power = 15,
-  start = 0,
-  end = 36000,
-  smooth = FALSE,
-  out = "TC",
-  heating = "heating"
-)
+read_snapshots(x, power = 15, smooth = FALSE, out = "TC", heating = "heating")
 }
 \arguments{
 \item{x}{data read from dts}
 
 \item{power}{is the power output of the heating unit to calculate thermal conductivity}
 
-\item{start}{determines start time to subset data to. default as 0, referring to 0 seconds elapsed time after heating}
-
-\item{end}{determines end time to subset data to. default as 36000, referring to 36000 seconds elapsed time after heating}
-
 \item{smooth}{determines if data is smoothed depending on noise. default is false}
 
 \item{out}{provides 3 output options; 1. 'dtsobject', 2. 'temp' and 2. 'TC' or thermal_conductivity}
+
+\item{start}{determines start time to subset data to. default as 0, referring to 0 seconds elapsed time after heating}
+
+\item{end}{determines end time to subset data to. default as 36000, referring to 36000 seconds elapsed time after heating}
 }
 \value{
 
