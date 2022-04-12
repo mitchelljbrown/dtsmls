@@ -12,7 +12,7 @@
 #'
 #' @examples
 process_heating <- function(x, TOC, BOC = 70,
-                            resample=TRUE, ultima=NULL,
+                            resample=FALSE, ultima=NULL,
                             set_back=0, heating='heating', buffer = 0.05) {
 
   if (resample==TRUE) {
