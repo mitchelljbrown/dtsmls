@@ -8,7 +8,7 @@ process_heating(
   x,
   TOC,
   BOC = 70,
-  resample = TRUE,
+  resample = FALSE,
   ultima = NULL,
   set_back = 0,
   heating = "heating",
