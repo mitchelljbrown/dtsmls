@@ -7,6 +7,10 @@
 #' @param resample set to TRUE if we want to interpolate the distance to another dts test for comparison, ussually a higher resolution test
 #' @param ultima specifies the vector or dts dataset to resample to
 #'
+#' @import data.table
+#' @import dplyr
+#' @import dts
+#'
 #' @return
 #' @export
 #'

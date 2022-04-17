@@ -3,3 +3,6 @@
 export(get_instantaneous)
 export(process_heating)
 export(read_snapshots)
+import(data.table)
+import(dplyr)
+import(dts)

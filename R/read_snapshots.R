@@ -7,6 +7,7 @@
 #' @param smooth determines if data is smoothed depending on noise. default is false
 #' @param out provides 3 output options; 1. 'dtsobject', 2. 'temp' and 2. 'TC' or thermal_conductivity
 #'
+#' @import data.table
 #'
 #' @return
 #' @export
