@@ -32,7 +32,7 @@ get_instantaneous <- function(x, power=15, n_knots=NULL) {
 #' @export
 #'
 #' @examples
-get_instantaneous.list <- function(dts_list, n_knots=NULL) {
+get_instantaneous.list <- function(dts_list, n_knots) {
 
   alldata <- list()
   time <- list()
@@ -42,7 +42,7 @@ get_instantaneous.list <- function(dts_list, n_knots=NULL) {
 
     # generate difference in slopes with fit_convolve
     start_time <- Sys.time()
-    df <- fit_convolve(x, n_knots=NULL)
+    df <- fit_convolve(x, n_knots=n_knots)
     end_time <- Sys.time()
     total <- end_time - start_time
     print(total)
