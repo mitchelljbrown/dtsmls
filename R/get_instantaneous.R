@@ -23,6 +23,15 @@ get_instantaneous <- function(x, power=15, n_knots=NULL) {
   return(df)
 }
 
+#' gets_instantaneous.list
+#'
+#' @param dts_list data read from dts
+#' @param n_knots specifies how to fit the data for fit_convolve()
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_instantaneous.list <- function(dts_list, n_knots=NULL) {
 
   alldata <- list()
