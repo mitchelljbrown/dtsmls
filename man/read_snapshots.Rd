@@ -4,7 +4,14 @@
 \alias{read_snapshots}
 \title{read_snaphots}
 \usage{
-read_snapshots(x, power = 15, smooth = FALSE, out = "TC", heating = "heating")
+read_snapshots(
+  x,
+  power = 15,
+  smooth = FALSE,
+  out = "TC",
+  heating = "heating",
+  duration = 1800
+)
 }
 \arguments{
 \item{x}{data read from dts}
@@ -14,6 +21,8 @@ read_snapshots(x, power = 15, smooth = FALSE, out = "TC", heating = "heating")
 \item{smooth}{determines if data is smoothed depending on noise. default is false}
 
 \item{out}{provides 3 output options; 1. 'dtsobject', 2. 'temp' and 2. 'TC' or thermal_conductivity}
+
+\item{duration}{}
 
 \item{start}{determines start time to subset data to. default as 0, referring to 0 seconds elapsed time after heating}
 

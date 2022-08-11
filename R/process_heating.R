@@ -40,6 +40,9 @@ process_heating <- function(x, TOC, BOC = 70,
   # step shift to
   x <- bath_calibration(x, smooth = TRUE)
 
+  # subset distance
+  x <- subset_distance(x, TOC, BOC)
+
   # step find heating times
   x <- heating_time(x, heating_type = heating)
 
@@ -68,7 +71,7 @@ process_heating <- function(x, TOC, BOC = 70,
   x$trace_time[type =='heating', log_elapsed_time := log(elapsed_time)]
   x$trace_data$distance <- get_data_table(x)$distance - TOC
   x$trace_distance$distance <- get_distance_table(x)$distance - TOC
-  x <- subset_distance(x, 0, (BOC-TOC))
+  #x <- subset_distance(x, 0, (BOC-TOC))
 
   return(x)
 }
