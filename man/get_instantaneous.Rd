@@ -12,6 +12,8 @@ get_instantaneous(x, power = 15, n_knots = NULL)
 \item{power}{specifies output power of the heating device used to calculate thermal conductivity}
 
 \item{n_knots}{specifies how to fit the data for fit_convolve()}
+
+\item{dts_list}{}
 }
 \value{
 

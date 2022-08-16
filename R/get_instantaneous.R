@@ -3,6 +3,7 @@
 #' @param x data read from dts
 #' @param power specifies output power of the heating device used to calculate thermal conductivity
 #' @param n_knots specifies how to fit the data for fit_convolve()
+#' @param dts_list
 #'
 #' @return
 #' @export
