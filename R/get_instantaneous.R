@@ -1,4 +1,4 @@
-#' Gets instantaneous slopes for each point in time at every depth measurement. Takes a single dts argument or a list of dts arguments to bind output to multiple
+#' get_instantaneous - Gets instantaneous slopes for each point in time at every depth measurement. Takes a single dts argument or a list of dts arguments to bind output to multiple
 #'
 #' @param x data read from dts
 #' @param power specifies output power of the heating device used to calculate thermal conductivity
@@ -9,6 +9,7 @@
 #' @export
 #'
 #' @examples
+
 get_instantaneous <- function(x, power=15, n_knots=NULL) {
 
   # generate difference in slopes with fit_convolve
@@ -24,7 +25,17 @@ get_instantaneous <- function(x, power=15, n_knots=NULL) {
   return(df)
 }
 
-get_instantaneous.list <- function(dts_list, n_knots=NULL) {
+#' get_instantaneous.list
+#'
+#' @param dts_list list of dts data from different snapshots
+#' @param n_knots specifies how to fit the data for fit_convolve()
+#'
+#' @return
+#' @export
+#'
+#' @examples
+
+get_instantaneous.list <- function(dts_list, ports, n_knots=12) {
 
   alldata <- list()
   time <- list()
@@ -32,18 +43,26 @@ get_instantaneous.list <- function(dts_list, n_knots=NULL) {
 
   for (x in dts_list) {
 
-    # generate difference in slopes with fit_convolve
+    # generate instantaneous slope with fit_convolve
     start_time <- Sys.time()
+
     df <- fit_convolve(x, n_knots=n_knots)
+
     end_time <- Sys.time()
     total <- end_time - start_time
     print(total)
     time[i] <- total
+
     df$instantaneous_slope <- df$delta_temperature/df$delta_time_log
-    # df[,cumulative_instansaneous_slope := cumsum(instantaneous_slope)]
-    df$type <- x$device$configuration_name
+
+    # set the name of the test as the date
+    test_name <- x$device$configuration_name
+    df$type <- word(test_name, 1)
+
+    # determine machine type (xt or ultima)
     df$machine <- x$device$type
 
+    # append to list of data.tables
     alldata[[i]] <- df
 
     i <- i + 1
@@ -51,6 +70,11 @@ get_instantaneous.list <- function(dts_list, n_knots=NULL) {
 
   df <- rbindlist(alldata)
   df[,thermal_conductivity := ((1.0/instantaneous_slope) * 15 / (4.0*pi))]
+
+  # add column of sand/bentonite as per MLS as-built design
+  df[,material:= ifelse(
+    distance %inrange% list(ports$top, ports$bottom)==TRUE,
+    "Sand", "Bentonite")]
 
 
   return(df)
