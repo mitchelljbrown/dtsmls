@@ -3,7 +3,6 @@
 #' @param x data read from dts (must be the output of "get_instantaneous" which uses "fit_convolve")
 #' @param ports port data from the as-built MLS (must be inparticular format)
 #' @param plot displays graphical information
-#' @param dts_list
 #'
 #' @return
 #' @export

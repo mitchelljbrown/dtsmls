@@ -10,7 +10,7 @@ read_snapshots(
   smooth = FALSE,
   out = "TC",
   heating = "heating",
-  duration = 1800
+  duration
 )
 }
 \arguments{

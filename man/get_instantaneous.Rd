@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_instantaneous.R
 \name{get_instantaneous}
 \alias{get_instantaneous}
-\title{Gets instantaneous slopes for each point in time at every depth measurement. Takes a single dts argument or a list of dts arguments to bind output to multiple}
+\title{get_instantaneous - Gets instantaneous slopes for each point in time at every depth measurement. Takes a single dts argument or a list of dts arguments to bind output to multiple}
 \usage{
 get_instantaneous(x, power = 15, n_knots = NULL)
 }
@@ -19,5 +19,5 @@ get_instantaneous(x, power = 15, n_knots = NULL)
 
 }
 \description{
-Gets instantaneous slopes for each point in time at every depth measurement. Takes a single dts argument or a list of dts arguments to bind output to multiple
+get_instantaneous - Gets instantaneous slopes for each point in time at every depth measurement. Takes a single dts argument or a list of dts arguments to bind output to multiple
 }

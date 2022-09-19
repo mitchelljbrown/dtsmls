@@ -15,7 +15,8 @@
 #' @export
 #'
 #' @examples
-process_heating <- function(x, TOC, BOC = 70,
+#'
+process_heating <- function(x, TOC, BOC,
                             resample=FALSE, ultima=NULL,
                             set_back=0, heating='heating', buffer = 0.05) {
 
@@ -27,7 +28,7 @@ process_heating <- function(x, TOC, BOC = 70,
     x$trace_distance <- na.omit(get_distance_table(x))
   }
 
-  #get rid of zero values if present in x
+  # get rid of zero values if present in x
   if (to_matrix(x)[1,1] == '0') {
 
     x$trace_distance <- get_distance_table(x)[with(x$trace_distance, distance > 0),]
@@ -35,7 +36,7 @@ process_heating <- function(x, TOC, BOC = 70,
   }
 
   # step find water bath
-  x <- find_water_bath(x, buffer = 0.05)
+  x <- find_water_bath(x, buffer = 0.05)  # changed from 0.05 to 0.1
 
   # step shift to
   x <- bath_calibration(x, smooth = TRUE)

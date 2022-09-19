@@ -3,6 +3,7 @@
 export(best_time)
 export(get_instantaneous)
 export(get_instantaneous.list)
+export(optimal_time)
 export(process_heating)
 export(read_snapshots)
 import(data.table)

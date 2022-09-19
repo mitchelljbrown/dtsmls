@@ -79,3 +79,73 @@ get_instantaneous.list <- function(dts_list, ports, n_knots=12) {
 
   return(df)
 }
+
+# test
+
+# setwd("D:/Sentry Well DTS Data/SEN6")
+#
+# input <- "2022_07/channel 3/out5/dts_data/dts.rds"
+#
+# dts <- readRDS(input)
+#
+# string <- dts$device$configuration_name[[1]]
+#
+# string <- strsplit(string, " ")[[1]]
+#
+#
+# inputs <- c(c("2018_08/channel_1/allfiles/dts_data/dts.rds", 10),
+#             c("2019_10/channel_1/allfiles/dts_data/dts.rds", 15),
+#             c("2020_02/channel_2/allfiles/dts_data/dts.rds", 15),
+#             c("2021_02/channel_2/allfiles/dts_data/dts.rds", 15),
+#             c("2021_08/channel_1/allfiles/dts_data/dts.rds", 15),
+#             c("2022_07/channel 3/out5/dts_data/dts.rds", 15))
+#
+# dts <- readRDS(inputs[1])
+#
+#
+#
+#
+# for (input in inputs) {
+#   dts <- readRDS(input)
+#
+#   string <- dts$device$configuration_name[[1]]
+#
+#   string <- strsplit(string, " ")[[1]]
+#
+#   for (x in string) {
+#     if (grepl("Wm", x)==TRUE) {
+#       power <- as.numeric(gsub("([0-9]+).*$", "\\1", x))
+#       print(power)
+#     }
+#   }
+#
+# }
+#
+#
+#
+#
+#
+#
+#
+# for (x in string) {
+#   if (grepl("Wm", x)==TRUE) {
+#     power <- as.numeric(gsub("([0-9]+).*$", "\\1", x))
+#     print(power)
+#   }
+# }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,8 +12,6 @@ best_time(x, ports, plot = TRUE)
 \item{ports}{port data from the as-built MLS (must be inparticular format)}
 
 \item{plot}{displays graphical information}
-
-\item{dts_list}{}
 }
 \value{
 

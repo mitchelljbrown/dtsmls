@@ -19,7 +19,7 @@ read_snapshots <- function(x,
                            smooth=FALSE,
                            out="TC",
                            heating="heating",
-                           duration = 1800) {
+                           duration) {
 
 
 

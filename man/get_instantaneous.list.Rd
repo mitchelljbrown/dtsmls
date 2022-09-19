@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_instantaneous.R
 \name{get_instantaneous.list}
 \alias{get_instantaneous.list}
-\title{Gets instantaneous.list}
+\title{get_instantaneous.list}
 \usage{
 get_instantaneous.list(dts_list, ports, n_knots = 12)
 }
@@ -15,5 +15,5 @@ get_instantaneous.list(dts_list, ports, n_knots = 12)
 
 }
 \description{
-Gets instantaneous.list
+get_instantaneous.list
 }

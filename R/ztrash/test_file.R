@@ -39,7 +39,7 @@ inputs <- c(#"2019_05_MLS/channel_1/allfiles/dts_data/dts.rds",
 
 setwd("D:/Sentry Well DTS Data/SEN6")
 
-input <- "2019_10_MLS/channel_1/allfiles/dts_data/dts.rds"
+input <- "2019_10/channel_1/allfiles/dts_data/dts.rds"
 
 
 x <- readRDS(input)

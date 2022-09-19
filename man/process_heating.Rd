@@ -7,7 +7,7 @@
 process_heating(
   x,
   TOC,
-  BOC = 70,
+  BOC,
   resample = FALSE,
   ultima = NULL,
   set_back = 0,
@@ -33,4 +33,7 @@ process_heating(
 }
 \description{
 process_heating
+}
+\examples{
+
 }
