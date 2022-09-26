@@ -68,6 +68,7 @@ optimal_time <- function(x) {
   print(max)
   print(plt_difference)
   print(ply_all_tests)
+  return(all_tests)
 }
 
 
