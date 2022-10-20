@@ -36,6 +36,9 @@ find_peaks <- function(alltests) {
   # col 3: peak begin
   # col 4: peak end
 
+
+
+
   # find peaks and dips
   peaks <- data.table(findpeaks(best_interval$difference, threshold = max/3))
   dips <- data.table(findpeaks((best_interval$difference*-1), threshold = max/3))

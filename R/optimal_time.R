@@ -10,39 +10,43 @@ optimal_time <- function(x) {
 
   full_dat <- data.table()
 
-  for (date in unique(x$type)) {
+  for (test in unique(x$date)) {
 
-    inst_single <- x[type==date]
+    inst_single <- x[date==test]
     inst_single <- drop_na(inst_single)
 
     data <- data.table()
 
-    for (time in unique(inst_single$elapsed_time)) {
+    for (time in unique(inst_single$e_time)) {
       if (time != '0') {
 
-        single_time <- inst_single[elapsed_time == time]
+        single_time <- inst_single[e_time == time]
         # print(nrow(single_time))
 
-        avg <- single_time[,.(averages=mean(instantaneous_slope)), by=material]
+        avg <- single_time[,.(averages=mean(slope)), by=material]
 
         difference <- avg[material=="Bentonite"]$averages - avg[material=="Sand"]$averages
 
         machine <- inst_single$machine[1]
 
-        row <- data.table(time, difference, date, machine)
+        row <- data.table(time, difference, test, machine)
 
         data <- rbind(data, row)
       }
     }
-    full_dat <- rbind(data, full_dat)
+    full_dat <- rbind(full_dat, data)
   }
 
   # plot
-  plt_difference <- ggplotly(ggplot(full_dat, aes(time, difference, group=date, color=date)) +
-                               geom_line())
+  plt_difference <- ggplotly(ggplot(full_dat, aes(time, difference, group=test, color=test)) +
+                               geom_line() +
+                               labs(title = "Average Slope Difference Between Bentonite and Sand",
+                                    y = "Slope Difference (Δ°C/Δs)",
+                                    x = "Log Elapsed Time (s)"))
+
 
   # extract time
-  max <- full_dat %>% group_by(date) %>%
+  max <- full_dat %>% group_by(test) %>%
     slice_max(difference, with_ties = FALSE)
 
   # filter original data.table for optimal times taken from "max"
@@ -50,25 +54,26 @@ optimal_time <- function(x) {
 
   for (i in seq_len(nrow(max))){
     print(max[i,]$time[[1]])
-    print(max[i,]$date[[1]])
+    print(max[i,]$test[[1]])
 
     time <- max[i,]$time[[1]]
-    date <- max[i,]$date[[1]]
+    date_isolate <- max[i,]$test[[1]]
 
-    single_test <- x[elapsed_time==time & date==date]
+    single_test <- x[e_time==time & date==date_isolate]
 
     all_tests <- rbind(all_tests, single_test)
   }
 
-  plt_all_tests <- ggplot(all_tests, aes(distance, thermal_conductivity, group=type)) +
-    geom_line(aes(color=type)) +
+  plt_all_tests <- ggplot(all_tests, aes(distance, slope, group=date)) +
+    geom_line(aes(color=date)) +
     ylim(c(0,3))
 
 
   print(max)
   print(plt_difference)
-  print(ply_all_tests)
-  return(all_tests)
+  print(plt_all_tests)
+
+  return(list(differences=full_dat, best_time=max, all.tests=all_tests))
 }
 
 
