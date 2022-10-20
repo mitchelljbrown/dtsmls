@@ -22,7 +22,6 @@ read_snapshots <- function(x,
                            duration) {
 
 
-
   x$trace_data <- get_data_table(x)[elapsed_time >= 0 & elapsed_time <= duration]
   x$trace_time <- get_time_table(x)[elapsed_time >= 0 & elapsed_time <= duration]
 
