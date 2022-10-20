@@ -16,6 +16,7 @@
 #'
 #' @examples
 #'
+
 process_heating <- function(x, TOC, BOC,
                             resample=FALSE, ultima=NULL,
                             set_back=0, heating='heating', buffer = 0.05) {
@@ -36,7 +37,7 @@ process_heating <- function(x, TOC, BOC,
   }
 
   # step find water bath
-  x <- find_water_bath(x, buffer = 0.05)  # changed from 0.05 to 0.1
+  x <- find_water_bath(x, buffer = buffer)  # changed from 0.05 to 0.1
 
   # step shift to
   x <- bath_calibration(x, smooth = TRUE)
