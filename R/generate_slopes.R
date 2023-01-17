@@ -1,13 +1,13 @@
 #' generate_slope - generate instantaneous slopes using moving window method
 #'
-#' @param dts data read from dts (must be the output of "get_instantaneous" which uses "fit_convolve")
+#' @param dts data read from dts
 #' @param ports
 #' @return
 #' @export
 #'
 #' @examples
 
-generate_slopes <- function(dts, ports) {
+generate_slopes <- function(dts, ports, n) {
 
 
   alldata <- data.table()
@@ -34,7 +34,7 @@ generate_slopes <- function(dts, ports) {
     slp <- list()
     for(i in 1:(length(tmid)-1)) {
       # one log cycle on each side of measurement point
-      tmp <- a[between(l_time, tmid[i]-1, tmid[i] + 1)]
+      tmp <- a[between(l_time, tmid[i]-n, tmid[i] + n)]
       # fit model can use lm, rlm, glmnet
       slp[[i]] <- tmp[,
                       list(slope = pmax(0, coef(MASS::rlm(temperature~l_time))[2]),
@@ -76,7 +76,7 @@ generate_slopes <- function(dts, ports) {
 }
 
 
-generate_slopes.single <- function(dts, ports) {
+generate_slopes.single <- function(dts, ports, n) {
 
 
   x <- dts
@@ -101,7 +101,7 @@ generate_slopes.single <- function(dts, ports) {
   slp <- list()
   for(i in 1:(length(tmid)-1)) {
     # one log cycle on each side of measurement point
-    tmp <- a[between(l_time, tmid[i]-1, tmid[i] + 1)]
+    tmp <- a[between(l_time, tmid[i]-n, tmid[i] + n)]
     # fit model can use lm, rlm, glmnet
     slp[[i]] <- tmp[,
                     list(slope = pmax(0, coef(MASS::rlm(temperature~l_time))[2]),
