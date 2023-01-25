@@ -2,12 +2,13 @@
 #'
 #' @param dts data read from dts
 #' @param ports
+#' @param n set the distance to calcualte slope
 #' @return
 #' @export
 #'
 #' @examples
 
-generate_slopes <- function(dts, ports, n) {
+generate_slopes <- function(dts, ports, n=1) {
 
 
   alldata <- data.table()

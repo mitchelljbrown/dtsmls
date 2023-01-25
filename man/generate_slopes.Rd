@@ -4,10 +4,12 @@
 \alias{generate_slopes}
 \title{generate_slope - generate instantaneous slopes using moving window method}
 \usage{
-generate_slopes(dts, ports)
+generate_slopes(dts, ports, n = 1)
 }
 \arguments{
-\item{dts}{data read from dts (must be the output of "get_instantaneous" which uses "fit_convolve")}
+\item{dts}{data read from dts}
+
+\item{n}{set the distance to calcualte slope}
 }
 \value{
 
